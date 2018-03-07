@@ -20,17 +20,18 @@ public class TestPeserta extends AppCompatActivity implements View.OnClickListen
         sikap = (Button) findViewById(R.id.b_sikap);
 
         peserta.setOnClickListener(this);
-        sikap.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                getSupportFragmentManager().beginTransaction().add(R.id.fragment_tes, new Tes_Sikap()).commit();
-            }
-        });
-
+        sikap.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_tes, new Tes_Praktek()).commit();
+        switch (v.getId()){
+            case R.id.b_praktek:
+                getSupportFragmentManager().beginTransaction().add(R.id.fragment_tes, new Tes_Praktek()).commit();
+                break;
+            case R.id.b_sikap:
+                getSupportFragmentManager().beginTransaction().add(R.id.fragment_tes, new Tes_Sikap()).commit();
+                break;
+        }
     }
 }
